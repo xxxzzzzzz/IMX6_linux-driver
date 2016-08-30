@@ -1,0 +1,1 @@
+cmd_/home/xiang/IMX6/IMX-driver/PCF8591/pcf8591md/ADconvert.o := /opt/freescale/usr/local/gcc-4.6.2-glibc-2.13-linaro-multilib-2011.12/fsl-linaro-toolchain/bin/arm-fsl-linux-gnueabi-ld -EL    -r -o /home/xiang/IMX6/IMX-driver/PCF8591/pcf8591md/ADconvert.o /home/xiang/IMX6/IMX-driver/PCF8591/pcf8591md/pcf8591.o /home/xiang/IMX6/IMX-driver/PCF8591/pcf8591md/pcf8591_rw.o 

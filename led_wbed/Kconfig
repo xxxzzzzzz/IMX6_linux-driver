@@ -1,0 +1,5 @@
+config LED_WBED
+	tristate "wbed_led"
+	default y
+	help
+	  Enables wbed three led

@@ -1,0 +1,10 @@
+obj-$(CONFIG_HX711_WEIGHT)      += hx711x4_wbed.o 
+hx711x4_wbed-objs=HX711x4.o IIC_analog/iic_analog.o IIC_analog/iic_analog2.o IIC_analog/iic_analog3.o IIC_analog/iic_analog4.o 
+#obj-$(CONFIG_HX711_WEIGHT)      += HX711x4.o
+#obj-$(CONFIG_HX711_WEIGHT)      += IIC_analog/iic_analog.o
+#obj-$(CONFIG_HX711_WEIGHT)      += IIC_analog/iic_analog2.o
+#obj-$(CONFIG_HX711_WEIGHT)      += IIC_analog/iic_analog3.o
+#obj-$(CONFIG_HX711_WEIGHT)      += IIC_analog/iic_analog4.o
+EXTRA_CFLAGS += -I/home/xiang/IMX6/linux/fsl-linux/drivers/char/weight_wbed/IIC_analog
+
+

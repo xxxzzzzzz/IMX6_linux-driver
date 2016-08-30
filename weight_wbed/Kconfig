@@ -1,0 +1,6 @@
+config HX711_WEIGHT           
+	tristate "weight hx711"
+	default y 
+	help                   
+	  Enables weightX4 hx711
+
