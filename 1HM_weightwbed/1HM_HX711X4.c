@@ -21,7 +21,7 @@
 //#include <linux/slab.h>
 #include <linux/kernel.h>
 #include <linux/uaccess.h>
-
+#include <linux/mutex.h>
 /*包含函数device_create 结构体class等头文件*/
 #include <linux/device.h>
 #include "iic_analog.h"
@@ -58,8 +58,7 @@ static atomic_t weightfd4 = ATOMIC_INIT(1);
 static int major;
 unsigned int fuwei1,fuwei2,fuwei3,fuwei4;
 
-static spinlock_t weight_lock,weight2_lock,weight3_lock,weight4_lock;
-
+static DEFINE_MUTEX(weight_mutex);
 /*weight1 open*/
 static int weight_open (struct inode *inode, struct file *file){
   int ret;
@@ -72,7 +71,6 @@ static int weight_open (struct inode *inode, struct file *file){
 
       printk("weight open\n");
 
-      spin_lock_init(&weight_lock);
       ret = gpio_request_one(GPIO4_6,GPIOF_DIR_IN, "fec-phy-reset");
 
       if(ret){printk("hx1 gpio GPIO4_6 request failed\n");}  
@@ -96,12 +94,13 @@ static unsigned long data;
        return -EINVAL;
 
       }
-      spin_lock(&weight_lock);  //need not spin_lock_irq because driver not interrupt so collapse //need spin_lock not collapse
+     mutex_lock(&weight_mutex);
+     
       data= get_weight();
-      printk("weight1 original %d",data);
+//    printk("weight1 original %d",data);
       data=data-fuwei1;
     //  data=data*10;  //1HM not *10 or s6400 unlike
-      spin_unlock(&weight_lock);
+     mutex_unlock(&weight_mutex);
       if(copy_to_user(buf, &data, sizeof(&data))!=0){
 
             return -EFAULT;
@@ -123,7 +122,7 @@ static int weight2_open (struct inode *inode, struct file *file){
 
      }
      printk("weight2 open\n");
-     spin_lock_init(&weight2_lock);
+   
 
      ret = gpio_request_one(GPIO4_8,GPIOF_DIR_IN, "fec-phy-reset");
      if(ret){printk("hx2 gpio GPIO4_8 request failed\n");}  
@@ -152,13 +151,14 @@ static unsigned int data;
        return -EINVAL;
 
       }
-     spin_lock(&weight2_lock);
+     mutex_lock(&weight_mutex);
+    
      data= get_weight_2();
-     printk("weight2 original %d",data);
+  //   printk("weight2 original %d",data);
      data=data-fuwei2;
     // data=data*10;    //1HM not *10 or s6400 unlike      
-     spin_unlock(&weight2_lock);
-	
+     mutex_unlock(&weight_mutex);
+
      if(copy_to_user(buf, &data, sizeof(&data))!=0){
 					
 	return -EFAULT;
@@ -179,7 +179,7 @@ static int weight3_open (struct inode *inode, struct file *file){
 
      }
      printk("weight3 open\n");
-     spin_lock_init(&weight3_lock);
+    
 
      ret = gpio_request_one(GPIO1_8,GPIOF_DIR_IN, "fec-phy-reset");
      if(ret){printk("hx3 gpio GPIO1_5 request failed\n");}  
@@ -205,12 +205,12 @@ static unsigned int data;
        return -EINVAL;
 
       }
-     spin_lock(&weight3_lock);
+  mutex_lock(&weight_mutex);
      data= get_weight_3();
      data=data-fuwei3;
     // data=data*10;   //1HM not *10 or s6400 unlike
-     spin_unlock(&weight3_lock);
-	
+  mutex_unlock(&weight_mutex);
+
      if(copy_to_user(buf, &data, sizeof(&data))!=0){
 					
 	return -EFAULT;
@@ -231,7 +231,7 @@ static int weight4_open (struct inode *inode, struct file *file){
 
      }
      printk("weight4 open\n");
-     spin_lock_init(&weight4_lock);
+  
      ret = gpio_request_one(GPIO4_14,GPIOF_DIR_IN, "fec-phy-reset");
      if(ret){printk("hx4 gpio GPIO4_14 request failed\n");}
      else {printk("hx4 gpio GPIO4_14  request success\n");}
@@ -255,11 +255,12 @@ static unsigned int data;
        return -EINVAL;
 
      }
-    spin_lock(&weight4_lock);
+    mutex_lock(&weight_mutex);
     data= get_weight_4();
     data=data-fuwei4;
  //   data=data*10;    //1HM not *10 or s6400 unlike
-    spin_unlock(&weight4_lock);
+    mutex_unlock(&weight_mutex);
+
     if(copy_to_user(buf, &data, sizeof(&data))!=0){
 	 					
 	  return -EFAULT;

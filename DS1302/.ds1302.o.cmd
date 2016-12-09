@@ -1,4 +1,4 @@
-cmd_/home/xiang/IMX6/IMX-driver/DS1302/ds1302.o := /opt/freescale/usr/local/gcc-4.6.2-glibc-2.13-linaro-multilib-2011.12/fsl-linaro-toolchain/bin/arm-fsl-linux-gnueabi-gcc -Wp,-MD,/home/xiang/IMX6/IMX-driver/DS1302/.ds1302.o.d  -nostdinc -isystem /opt/freescale/usr/local/gcc-4.6.2-glibc-2.13-linaro-multilib-2011.12/fsl-linaro-toolchain/bin/../lib/gcc/arm-fsl-linux-gnueabi/4.6.2/include -I/home/xiang/IMX6/fsl-linux/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/xiang/IMX6/fsl-linux/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/xiang/IMX6/fsl-linux/include/uapi -Iinclude/generated/uapi -include /home/xiang/IMX6/fsl-linux/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -I/home/xiang/IMX6/IMX-driver/DS1302  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(ds1302)"  -D"KBUILD_MODNAME=KBUILD_STR(ds1302md)" -c -o /home/xiang/IMX6/IMX-driver/DS1302/.tmp_ds1302.o /home/xiang/IMX6/IMX-driver/DS1302/ds1302.c
+cmd_/home/xiang/IMX6/IMX-driver/DS1302/ds1302.o := /opt/freescale/usr/local/gcc-4.6.2-glibc-2.13-linaro-multilib-2011.12/fsl-linaro-toolchain/bin/arm-fsl-linux-gnueabi-gcc -Wp,-MD,/home/xiang/IMX6/IMX-driver/DS1302/.ds1302.o.d  -nostdinc -isystem /opt/freescale/usr/local/gcc-4.6.2-glibc-2.13-linaro-multilib-2011.12/fsl-linaro-toolchain/bin/../lib/gcc/arm-fsl-linux-gnueabi/4.6.2/include -I/home/xiang/IMX6/fsl-linux/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/xiang/IMX6/fsl-linux/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/xiang/IMX6/fsl-linux/include/uapi -Iinclude/generated/uapi -include /home/xiang/IMX6/fsl-linux/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -fno-dwarf2-cfi-asm -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -I/home/xiang/IMX6/IMX-driver/DS1302  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(ds1302)"  -D"KBUILD_MODNAME=KBUILD_STR(ds1302web)" -c -o /home/xiang/IMX6/IMX-driver/DS1302/.tmp_ds1302.o /home/xiang/IMX6/IMX-driver/DS1302/ds1302.c
 
 source_/home/xiang/IMX6/IMX-driver/DS1302/ds1302.o := /home/xiang/IMX6/IMX-driver/DS1302/ds1302.c
 
@@ -549,6 +549,38 @@ deps_/home/xiang/IMX6/IMX-driver/DS1302/ds1302.o := \
     $(wildcard include/config/xen/dom0.h) \
     $(wildcard include/config/xen/pvh.h) \
   include/linux/of_gpio.h \
+  include/linux/rtc.h \
+    $(wildcard include/config/rtc/intf/dev/uie/emul.h) \
+    $(wildcard include/config/rtc/hctosys/device.h) \
+  include/linux/interrupt.h \
+    $(wildcard include/config/irq/forced/threading.h) \
+    $(wildcard include/config/generic/irq/probe.h) \
+  include/linux/irqreturn.h \
+  include/linux/irqnr.h \
+  include/uapi/linux/irqnr.h \
+  include/linux/hardirq.h \
+  include/linux/ftrace_irq.h \
+    $(wildcard include/config/ftrace/nmi/enter.h) \
+  include/linux/vtime.h \
+    $(wildcard include/config/virt/cpu/accounting/native.h) \
+    $(wildcard include/config/virt/cpu/accounting/gen.h) \
+    $(wildcard include/config/virt/cpu/accounting.h) \
+    $(wildcard include/config/irq/time/accounting.h) \
+  include/linux/context_tracking_state.h \
+  /home/xiang/IMX6/fsl-linux/arch/arm/include/asm/hardirq.h \
+  /home/xiang/IMX6/fsl-linux/arch/arm/include/asm/irq.h \
+    $(wildcard include/config/sparse/irq.h) \
+    $(wildcard include/config/multi/irq/handler.h) \
+  include/linux/irq_cpustat.h \
+  include/linux/hrtimer.h \
+    $(wildcard include/config/high/res/timers.h) \
+    $(wildcard include/config/timerfd.h) \
+  include/linux/timerqueue.h \
+  include/uapi/linux/rtc.h \
+  include/linux/poll.h \
+  include/uapi/linux/poll.h \
+  arch/arm/include/generated/asm/poll.h \
+  /home/xiang/IMX6/fsl-linux/include/uapi/asm-generic/poll.h \
 
 /home/xiang/IMX6/IMX-driver/DS1302/ds1302.o: $(deps_/home/xiang/IMX6/IMX-driver/DS1302/ds1302.o)
 

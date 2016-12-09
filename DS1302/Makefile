@@ -1,5 +1,5 @@
-obj-m +=ds1302md.o
-ds1302md-objs=ds1302.o ds1302_rw.o
+obj-m +=ds1302web.o
+ds1302web-objs=ds1302.o ds1302_rw.o
 KDIR:=/home/xiang/IMX6/fsl-linux
 EXTRA_CFLAGS += -I/home/xiang/IMX6/IMX-driver/DS1302
 
