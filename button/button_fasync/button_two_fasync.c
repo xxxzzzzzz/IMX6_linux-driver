@@ -52,15 +52,16 @@ static int major;
 unsigned char key_value;
 static irqreturn_t buttons_irq(int irq,void* dev_id){
 
-    printk("enter buttons irq process\n");
-    printk("irq=%d\n",irq);
+//    printk("enter buttons irq process\n");
+  //  printk("irq=%d\n",irq);
      /*10ms后启动定时器*/ 
     mod_timer(&button_timer,jiffies+HZ/100);
     return IRQ_HANDLED;
 }
 
 static void buttons_timer_function(unsigned long data){
-
+    if((gpio_get_value(GPIO2_22)!=0)&&(gpio_get_value(GPIO6_15)!=0))
+	    return 0;
 
     if(gpio_get_value(GPIO2_22)==0){
 

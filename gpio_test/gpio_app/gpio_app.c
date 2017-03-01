@@ -11,12 +11,12 @@ if(fd<0){
 printf("gpio_test open failed!");	
 
   }
-while(1){
 ioctl(fd,1,0);
 sleep(1);
 ioctl(fd,0,0);
 sleep(1);
-}
+ioctl(fd,1,0);
+sleep(1);
 
 return 0;
 }

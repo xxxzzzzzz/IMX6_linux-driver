@@ -26,7 +26,7 @@ MODULE_LICENSE("Dual BSD/GPL");
 
 #define IMX_GPIO_NR(bank, nr)           (((bank) - 1) * 32 + (nr))
 
-#define gpio_test IMX_GPIO_NR(3, 26)
+#define gpio_test IMX_GPIO_NR(4, 28)  
 
 
 
