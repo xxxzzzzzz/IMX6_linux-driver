@@ -33,17 +33,17 @@ static struct input_dev *heat_release_dev;
 
 static irqreturn_t heat_release_irq(int irq,void* dev_id){
 
-	    printk("heat release\n");
-   /* if(gpio_get_value(GPIO1_05)==0){
+//	    printk("heat release\n");
+    /*if(gpio_get_value(GPIO1_05)==1){*/
 
-	    printk("heat release\n");
+	 //   printk("heat release\n");
 
         input_report_key(heat_release_dev, KEY_H, 1); 
         input_sync(heat_release_dev);
    	input_report_key(heat_release_dev, KEY_H, 0);
    	input_sync(heat_release_dev);
-    }*/
-   /* else{
+   /* }*/
+  /* else{
 	 printk("heat release else\n"); 
    	 input_report_key(heat_release_dev, KEY_H, 0);
    	 input_sync(heat_release_dev);
