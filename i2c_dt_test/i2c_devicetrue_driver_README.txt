@@ -77,6 +77,7 @@ i2c_master_recv(adxl345_client, &ID, 1);  // 接收寄存器的值
 然后就可以用i2c_master_send和i2c_master_recv来读写芯片寄存器的，这个函数网上很多随便查找。这个比i2c_smbus读写快多了 建议不要用i2c smbus，
 
 
+这里有一点要注意，在设备模拟I2C的时候地址可能是器件地址，但是在用linux的I2C控制器的时候就可能出现和器件地址不一样的值，所以当用控制器去挂接i2c设备的时候，先在终端执行i2cdecet -y 2 命令来确定i2c器件在linux映射下的地址
 
 
 
